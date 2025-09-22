@@ -1,7 +1,8 @@
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("multiplatform")
+    alias(libs.plugins.kotlin.multiplatform)
     kotlin("plugin.serialization")
     id("org.jetbrains.dokka")
     `maven-publish`
@@ -11,10 +12,8 @@ kotlin {
     explicitApi()
 
     jvm {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
 
         testRuns["test"].executionTask.configure {
@@ -28,15 +27,21 @@ kotlin {
     }
 
     linuxX64()
+    linuxArm64()
     macosX64()
+    macosArm64()
+    mingwX64()
 
-    ios()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+    applyDefaultHierarchyTemplate()
 
     sourceSets {
 
         // Common source-sets
 
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 implementation(libs.datetime)
                 implementation(libs.serialization)
@@ -48,7 +53,7 @@ kotlin {
             }
         }
 
-        val commonTest by getting {
+        commonTest {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
@@ -56,15 +61,13 @@ kotlin {
         }
 
         // JVM source-sets
-
-        val jvmMain by getting {
+        jvmMain {
             dependencies {
-                implementation(libs.ktor.engine.cio)
-                implementation(libs.logback)
+                implementation(libs.ktor.engine.java)
             }
         }
 
-        val jvmTest by getting {
+        jvmTest {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
@@ -72,13 +75,13 @@ kotlin {
 
         // JS source-sets
 
-        val jsMain by getting {
+        jsMain {
             dependencies {
                 implementation(libs.ktor.engine.js)
             }
         }
 
-        val jsTest by getting {
+        jsTest {
             dependencies {
                 implementation(kotlin("test-js"))
             }
@@ -87,25 +90,38 @@ kotlin {
         // Desktop source-sets
 
         val desktopMain by creating {
-            dependsOn(commonMain)
+            dependsOn(commonMain.get())
             dependencies {
                 implementation(libs.ktor.engine.curl)
             }
         }
-
-        val linuxX64Main by getting { dependsOn(desktopMain) }
-        val macosX64Main by getting { dependsOn(desktopMain) }
-
         val desktopTest by creating {
-            dependsOn(commonTest)
+            dependsOn(commonTest.get())
         }
 
-        val linuxX64Test by getting { dependsOn(desktopTest) }
-        val macosX64Test by getting { dependsOn(desktopTest) }
+        linuxMain {
+            dependsOn(desktopMain)
+        }
+        macosMain {
+            dependsOn(desktopMain)
+        }
+        mingwMain {
+            dependsOn(desktopMain)
+        }
+
+        linuxTest {
+            dependsOn(desktopTest)
+        }
+        macosTest {
+            dependsOn(desktopTest)
+        }
+        mingwTest {
+            dependsOn(desktopTest)
+        }
+
 
         // iOS source-sets
-
-        val iosMain by getting {
+        iosMain {
             dependencies {
                 implementation(libs.ktor.engine.ios)
             }

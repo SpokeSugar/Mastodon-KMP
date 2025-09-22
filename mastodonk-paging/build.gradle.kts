@@ -1,8 +1,9 @@
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("multiplatform")
+    alias(libs.plugins.kotlin.multiplatform)
     id("org.jetbrains.dokka")
     `maven-publish`
 }
@@ -11,10 +12,8 @@ kotlin {
     explicitApi()
 
     jvm {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
 
         testRuns["test"].executionTask.configure {
@@ -22,21 +21,29 @@ kotlin {
         }
     }
 
+    js(IR) {
+        browser()
+        nodejs()
+    }
+
+    linuxX64()
+    linuxArm64()
+    macosX64()
+    macosArm64()
+    mingwX64()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 api(projects.mastodonkCore)
-            }
-        }
-        val commonTest by getting
-
-        val jvmMain by getting {
-            dependencies {
                 api(libs.androidx.paging.common)
             }
         }
 
-        val jvmTest by getting {
+        jvmTest {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
@@ -45,8 +52,8 @@ kotlin {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_1_8)
     }
 }
 

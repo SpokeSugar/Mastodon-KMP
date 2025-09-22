@@ -1,16 +1,17 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    val kotlinVersion = "1.8.20"
-    kotlin("multiplatform") version kotlinVersion apply false
-    kotlin("plugin.serialization") version kotlinVersion apply false
-    id("org.jetbrains.dokka") version "1.8.20"
-    id("com.diffplug.spotless") version "6.19.0"
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.serialization) apply false
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.spotless)
 }
 
 buildscript {
     repositories {
+        google()
         gradlePluginPortal()
     }
 }
@@ -74,9 +75,9 @@ allprojects {
         }
     }
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
+    tasks.withType<KotlinJvmCompile> {
+        compilerOptions {
+            optIn.add("kotlin.RequiresOptIn")
         }
     }
 }
