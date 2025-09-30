@@ -8,7 +8,7 @@ import fr.outadoc.mastodonk.paging.pagingSource
 
 public fun ListsApi.getListAccountsSource(listId: String): PagingSource<PageInfo, Account> {
     return pagingSource { params ->
-        getListAccounts(
+        getAccountsInList(
             listId = listId,
             limit = params.loadSize,
             pageInfo = params.key
