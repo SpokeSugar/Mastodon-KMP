@@ -7,7 +7,7 @@ import fr.outadoc.mastodonk.api.entity.PrivacyPolicy
 import fr.outadoc.mastodonk.api.entity.Rule
 import fr.outadoc.mastodonk.api.entity.TermsOfService
 import fr.outadoc.mastodonk.api.entity.V1Instance
-import kotlinxs.datetime.LocalDate
+import kotlinx.datetime.LocalDate
 
 /**
  * Informational endpoint to discover information about a Mastodon instance.
