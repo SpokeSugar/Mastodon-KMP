@@ -3,6 +3,7 @@ package fr.outadoc.mastodonk.api.entity
 import fr.outadoc.mastodonk.api.entity.paging.Pageable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
  * Represents a conversation with "direct message" visibility.

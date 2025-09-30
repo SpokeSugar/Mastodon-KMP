@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.api.entity.request
 
 import fr.outadoc.mastodonk.api.entity.Account
-import fr.outadoc.mastodonk.api.entity.ActionType
+import fr.outadoc.mastodonk.api.entity.request.ActionType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

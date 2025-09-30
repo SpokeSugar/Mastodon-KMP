@@ -1,61 +1,22 @@
 package fr.outadoc.mastodonk.api.entity.request
 
-import fr.outadoc.mastodonk.api.entity.GrantType
-import fr.outadoc.mastodonk.api.entity.Token
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Object used to get a new [Token].
- */
 @Serializable
 public data class TokenGet(
-
-    /**
-     * Client ID, obtained during app registration.
-     */
-    @SerialName("client_id")
-    val clientId: String,
-
-    /**
-     * Client secret, obtained during app registration.
-     */
-    @SerialName("client_secret")
-    val clientSecret: String,
-
-    /**
-     * URI to redirect the user to.
-     *
-     * If this parameter is set to `urn:ietf:wg:oauth:2.0:oob`
-     * then the token will be shown instead.
-     *
-     * Must match one of the redirect URIs declared during app registration.
-     */
-    @SerialName("redirect_uri")
-    val redirectUri: String,
-
-    /**
-     * Grant type, set to [GrantType.AuthorizationCode] if code
-     * is provided in order to gain user-level access.
-     *
-     * Otherwise, set equal to [GrantType.ClientCredentials] to
-     * obtain app-level access only.
-     */
     @SerialName("grant_type")
-    val grantType: GrantType,
-
-    /**
-     * List of requested OAuth scopes, separated by spaces.
-     *
-     * Must be a subset of scopes declared during app registration.
-     * If not provided, defaults to read.
-     */
-    @SerialName("scope")
-    val scope: String?,
-
-    /**
-     * A user authorization code, obtained via /oauth/authorize.
-     */
+    public val grantType: String,
+    @SerialName("client_id")
+    public val clientId: String,
+    @SerialName("client_secret")
+    public val clientSecret: String,
+    @SerialName("redirect_uri")
+    public val redirectUri: String,
     @SerialName("code")
-    val code: String?
+    public val code: String? = null,
+    @SerialName("code_verifier")
+    public val codeVerifier: String? = null,
+    @SerialName("scope")
+    public val scope: String? = null
 )

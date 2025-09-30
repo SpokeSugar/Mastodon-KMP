@@ -2,43 +2,80 @@ package fr.outadoc.mastodonk.api.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
- * Represents an application that interfaces with the
- * REST API to access accounts or post statuses.
+ * Represents an application that interfaces with the REST API, 
+ * for example to access account information or post statuses.
  */
 @Serializable
 public data class Application(
 
     /**
-     * The name of your application.
+     * The numeric ID of the application.
+     * Version history: 0.9.9 - added
+     */
+    @SerialName("id")
+    val id: String,
+
+    /**
+     * The name of the application.
+     * Version history: 0.9.9 - added
      */
     @SerialName("name")
     val name: String,
 
     /**
-     * The website associated with your application.
+     * The website associated with the application.
+     * Version history:
+     * 0.9.9 - added
+     * 3.5.1 - the property is now nullable
      */
     @SerialName("website")
     val website: String? = null,
 
     /**
+     * The scopes for the application. This is the registered `scopes` string split on whitespace.
+     * Version history: 4.3.0 - added
+     */
+    @SerialName("scopes")
+    val scopes: List<String>,
+
+    /**
+     * The registered redirection URI(s) for the application.
+     * Values can be URLs or "urn:ietf:wg:oauth:2.0:oob".
+     * Version history: 4.3.0 - added
+     */
+    @SerialName("redirect_uris")
+    val redirectUris: List<String>,
+
+    /**
+     * The registered redirection URI(s) for the application stored as a single string.
+     * Multiple URIs are separated by whitespace characters. May contain `
+` characters.
+     * Version history:
+     * 0.0.0 - added
+     * 4.3.0 - deprecated in favour of `redirectUris`.
+     * @deprecated Deprecated since version 4.3.0 in favour of [redirectUris].
+     * The value of this property is not a well-formed URI when multiple redirect URIs are registered.
+     */
+    @SerialName("redirect_uri")
+    @Deprecated(
+        message = "Deprecated since Mastodon API version 4.3.0 in favour of redirectUris. This value may not be a well-formed URI if multiple URIs are present.", 
+        replaceWith = ReplaceWith("redirectUris")
+    )
+    val redirectUri: String,
+
+    /**
      * Used for Push Streaming API.
-     *
-     * Equivalent to [PushSubscription.serverKey].
+     * Equivalent to WebPushSubscription#server_key and Instance#vapid_public_key.
+     * Version history:
+     * 2.8.0 - added
+     * 4.3.0 - deprecated pending removal.
+     * @deprecated Deprecated since Mastodon API version 4.3.0 pending removal.
+     * For this value, please see api/v2/instance (`configuration.vapid.public_key`).
      */
     @SerialName("vapid_key")
-    val vapidKey: String? = null,
-
-    /**
-     * Client ID key, used for obtaining OAuth tokens.
-     */
-    @SerialName("client_id")
-    val clientId: String? = null,
-
-    /**
-     * Client secret key, used for obtaining OAuth tokens.
-     */
-    @SerialName("client_secret")
-    val clientSecret: String? = null,
+    @Deprecated(message = "Deprecated since Mastodon API version 4.3.0 pending removal. See Mastodon API v2 instance endpoint (configuration.vapid.public_key) for this value.")
+    val vapidKey: String? = null
 )

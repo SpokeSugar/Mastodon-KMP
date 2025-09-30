@@ -1,6 +1,6 @@
 package fr.outadoc.mastodonk.paging.api.endpoint.accounts
 
-import fr.outadoc.mastodonk.api.endpoint.accounts.AccountsApi
+import fr.outadoc.mastodonk.api.endpoint.v1.accounts.AccountsApi
 import fr.outadoc.mastodonk.api.entity.Account
 import fr.outadoc.mastodonk.api.entity.Status
 import fr.outadoc.mastodonk.api.entity.paging.PageInfo

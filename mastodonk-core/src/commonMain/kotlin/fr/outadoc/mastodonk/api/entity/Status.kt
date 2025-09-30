@@ -4,6 +4,7 @@ import fr.outadoc.mastodonk.api.entity.paging.Pageable
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
  * Represents a status posted by an account.
@@ -60,7 +61,13 @@ public data class Status(
      * Media that is attached to this status.
      */
     @SerialName("media_attachments")
-    val mediaAttachments: List<Attachment>,
+    val attachments: List<MediaAttachment>,
+
+    /**
+     * The application used to post this status.
+     */
+    @SerialName("application")
+    val application: StatusApplication? = null,
 
     /**
      * Mentions of users within the status content.
@@ -72,13 +79,13 @@ public data class Status(
      * Hashtags used within the status content.
      */
     @SerialName("tags")
-    val tags: List<Tag>,
+    val tags: List<StatusTag>,
 
     /**
      * Custom emoji to be used when rendering status content.
      */
     @SerialName("emojis")
-    val emojis: List<Emoji>,
+    val emojis: List<CustomEmoji>,
 
     /**
      * How many boosts this status has received.
@@ -93,16 +100,16 @@ public data class Status(
     val favouritesCount: Long,
 
     /**
+     * How many accepted quotes this status has.
+     */
+    @SerialName("quotes_count")
+    val quotesCount: Long? = null,
+
+    /**
      * How many replies this status has received.
      */
     @SerialName("replies_count")
     val repliesCount: Long,
-
-    /**
-     * The application used to post this status.
-     */
-    @SerialName("application")
-    val application: Application? = null,
 
     /**
      * A link to the status's HTML representation.
@@ -160,6 +167,24 @@ public data class Status(
     val plainText: String? = null,
 
     /**
+     * Timestamp of when the status was last edited.
+     */
+    @SerialName("edited_at")
+    val editedAt: Instant? = null,
+
+    /**
+     * Information about the status being quoted, if any.
+     */
+    @SerialName("quote")
+    val quote: Quote? = null,
+
+    /**
+     * Summary of the post quote's approval policy and how it applies to the user making the request.
+     */
+    @SerialName("quote_approval")
+    val quoteApproval: QuoteApproval? = null,
+
+    /**
      * Whether the current account has favourited this status.
      */
     @SerialName("favourited")
@@ -190,6 +215,13 @@ public data class Status(
      */
     @SerialName("pinned")
     val isPinned: Boolean? = null,
+
+    /**
+     * The filter and keywords that matched this status.
+     */
+    @SerialName("filtered")
+    val filtered: List<FilterResult>? = null
+
 ) : Pageable {
 
     override val id: String

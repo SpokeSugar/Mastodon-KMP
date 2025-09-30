@@ -2,96 +2,232 @@ package fr.outadoc.mastodonk.api.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
- * Information about the software instance of Mastodon running on this domain.
+ * Represents a Mastodon instance.
  */
 @Serializable
 public data class Instance(
+    @SerialName("domain")
+    val domain: String,
 
-    /**
-     * The domain name of the instance.
-     */
-    @SerialName("uri")
-    val uri: String,
-
-    /**
-     * The title of the instance.
-     */
     @SerialName("title")
     val title: String,
 
-    /**
-     * An admin-defined description of the instance.
-     */
-    @SerialName("description")
-    val description: String,
-
-    /**
-     * A shorter description of the instance defined by the admin.
-     */
-    @SerialName("short_description")
-    val shortDescription: String,
-
-    /**
-     * An email that may be contacted for any inquiries.
-     */
-    @SerialName("email")
-    val email: String,
-
-    /**
-     * The version of Mastodon installed on the instance.
-     */
     @SerialName("version")
     val version: String,
 
-    /**
-     * Primary languages of the website and its staff.
-     *
-     * ISO 639-1 language two-letter code.
-     */
+    @SerialName("source_url")
+    val sourceUrl: String,
+
+    @SerialName("description")
+    val description: String,
+
+    @SerialName("usage")
+    val usage: Usage,
+
+    @SerialName("thumbnail")
+    val thumbnail: Thumbnail,
+
+    @SerialName("icon")
+    val icon: List<Icon>? = null,
+
     @SerialName("languages")
     val languages: List<String>,
 
-    /**
-     * Whether registrations are enabled.
-     */
+    @SerialName("configuration")
+    val configuration: Configuration,
+
     @SerialName("registrations")
-    val areRegistrationsEnabled: Boolean,
+    val registrations: Registrations,
 
-    /**
-     * Whether registrations require moderator approval.
-     */
-    @SerialName("approval_required")
-    val isApprovalRequired: Boolean,
+    @SerialName("api_versions")
+    val apiVersions: Map<String, Int>? = null,
 
-    /**
-     * Whether invites are enabled.
-     */
-    @SerialName("invites_enabled")
-    val areInvitesEnabled: Boolean,
+    @SerialName("contact")
+    val contact: Contact,
 
-    /**
-     * URLs of interest for clients apps.
-     */
+    @SerialName("rules")
+    val rules: List<Rule>
+)
+
+@Serializable
+public data class Usage(
+    @SerialName("users")
+    val users: Users
+)
+
+@Serializable
+public data class Users(
+    @SerialName("active_month")
+    val activeMonth: Long
+)
+
+@Serializable
+public data class Thumbnail(
+    @SerialName("url")
+    val url: String,
+
+    @SerialName("blurhash")
+    val blurhash: String,
+
+    @SerialName("versions")
+    val versions: Map<String, String>
+)
+
+@Serializable
+public data class Icon(
+    @SerialName("src")
+    val src: String,
+
+    @SerialName("size")
+    val size: String
+)
+
+@Serializable
+public data class Configuration(
     @SerialName("urls")
-    val urls: InstanceUrls,
+    val urls: Urls,
 
-    /**
-     * Statistics about how much information the instance contains.
-     */
-    @SerialName("stats")
-    val stats: InstanceStats,
+    @SerialName("vapid")
+    val vapid: Vapid? = null,
 
-    /**
-     * URL of a banner image for the instance.
-     */
-    @SerialName("thumbnail")
-    val thumbnail: String? = null,
+    @SerialName("accounts")
+    val accounts: Accounts,
 
-    /**
-     * A staff user that can be contacted, as an alternative to [email].
-     */
-    @SerialName("contact_account")
-    val contactAccount: Account? = null
+    @SerialName("statuses")
+    val statuses: Statuses,
+
+    @SerialName("media_attachments")
+    val mediaAttachments: MediaAttachments,
+
+    @SerialName("polls")
+    val polls: Polls,
+
+    @SerialName("translation")
+    val translation: Translation,
+
+    @SerialName("limited_federation")
+    val limitedFederation: Boolean? = null
+)
+
+@Serializable
+public data class Urls(
+    @SerialName("streaming")
+    val streaming: String,
+
+    @SerialName("status")
+    val status: String? = null,
+
+    @SerialName("about")
+    val about: String? = null,
+
+    @SerialName("privacy_policy")
+    val privacyPolicy: String? = null,
+
+    @SerialName("terms_of_service")
+    val termsOfService: String? = null
+)
+
+@Serializable
+public data class Vapid(
+    @SerialName("public_key")
+    val publicKey: String
+)
+
+@Serializable
+public data class Accounts(
+    @SerialName("max_featured_tags")
+    val maxFeaturedTags: Long,
+
+    @SerialName("max_pinned_statuses")
+    val maxPinnedStatuses: Long? = null
+)
+
+@Serializable
+public data class Statuses(
+    @SerialName("max_characters")
+    val maxCharacters: Long,
+
+    @SerialName("max_media_attachments")
+    val maxMediaAttachments: Long,
+
+    @SerialName("characters_reserved_per_url")
+    val charactersReservedPerUrl: Long
+)
+
+@Serializable
+public data class MediaAttachments(
+    @SerialName("description_limit")
+    val descriptionLimit: Long,
+
+    @SerialName("image_matrix_limit")
+    val imageMatrixLimit: Long,
+
+    @SerialName("image_size_limit")
+    val imageSizeLimit: Long,
+
+    @SerialName("supported_mime_types")
+    val supportedMimeTypes: List<String>,
+
+    @SerialName("video_frame_rate_limit")
+    val videoFrameRateLimit: Long,
+
+    @SerialName("video_matrix_limit")
+    val videoMatrixLimit: Long,
+
+    @SerialName("video_size_limit")
+    val videoSizeLimit: Long
+)
+
+@Serializable
+public data class Polls(
+    @SerialName("max_options")
+    val maxOptions: Long,
+
+    @SerialName("max_characters_per_option")
+    val maxCharactersPerOption: Long,
+
+    @SerialName("min_expiration")
+    val minExpiration: Long,
+
+    @SerialName("max_expiration")
+    val maxExpiration: Long
+)
+
+@Serializable
+public data class Translation(
+    @SerialName("enabled")
+    val enabled: Boolean
+)
+
+@Serializable
+public data class Registrations(
+    @SerialName("enabled")
+    val enabled: Boolean,
+
+    @SerialName("approval_required")
+    val approvalRequired: Boolean,
+
+    @SerialName("reason_required")
+    val reasonRequired: Boolean? = null,
+
+    @SerialName("message")
+    val message: String? = null,
+
+    @SerialName("min_age")
+    val minAge: Int? = null,
+
+    @SerialName("url")
+    val url: String? = null
+)
+
+@Serializable
+public data class Contact(
+    @SerialName("email")
+    val email: String,
+
+    @SerialName("account")
+    val account: Account
 )

@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.paging.api.endpoint.search
 
 import androidx.paging.PagingSource
-import fr.outadoc.mastodonk.api.endpoint.search.SearchApi
+import fr.outadoc.mastodonk.api.endpoint.v1.search.SearchApi
 import fr.outadoc.mastodonk.api.entity.Account
 import fr.outadoc.mastodonk.api.entity.SearchType
 import fr.outadoc.mastodonk.api.entity.Status

@@ -3,6 +3,7 @@ package fr.outadoc.mastodonk.api.entity
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
  * Represents a poll attached to a status.
@@ -10,29 +11,46 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class Poll(
 
+    /**
+     * The ID of the poll in the database.
+     */
     @SerialName("id")
     val pollId: String,
 
     /**
-     * Whether the poll is currently expired.
+     * When the poll ends.
+     * Null if the poll does not end.
+     */
+    @SerialName("expires_at")
+    val expiresAt: Instant? = null,
+
+    /**
+     * Is the poll currently expired?
      */
     @SerialName("expired")
     val isExpired: Boolean,
 
     /**
-     * Whether the poll allows multiple-choice answers.
+     * Does the poll allow multiple-choice answers?
      */
     @SerialName("multiple")
     val allowsMultipleChoices: Boolean,
 
     /**
-     * The number of votes received on this poll.
+     * How many votes have been received.
      */
     @SerialName("votes_count")
     val votesCount: Long,
 
     /**
-     * The list of options available in this poll.
+     * How many unique accounts have voted on a multiple-choice poll.
+     * Null if `multiple` is false.
+     */
+    @SerialName("voters_count")
+    val votersCount: Long? = null,
+
+    /**
+     * Possible answers for the poll.
      */
     @SerialName("options")
     val options: List<PollOption>,
@@ -41,28 +59,17 @@ public data class Poll(
      * Custom emoji to be used for rendering poll options.
      */
     @SerialName("emojis")
-    val emojis: List<Emoji>,
+    val emojis: List<CustomEmoji>,
 
     /**
-     * Time at which the poll will expire.
-     */
-    @SerialName("expires_at")
-    val expiresAt: Instant? = null,
-
-    /**
-     * Number of unique accounts that voted on this poll.
-     */
-    @SerialName("voters_count")
-    val votersCount: Long? = null,
-
-    /**
-     * Whether the current account has voted on this poll.
+     * When called with a user token, has the authorized user voted?
      */
     @SerialName("voted")
     val hasVoted: Boolean? = null,
 
     /**
-     * If [hasVoted] is set, the current account's vote choices.
+     * When called with a user token, which options has the authorized user chosen?
+     * Contains an array of index values for `options`.
      */
     @SerialName("own_votes")
     val ownVotes: List<Int>? = null

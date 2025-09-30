@@ -2,6 +2,7 @@ package fr.outadoc.mastodonk.api.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
  * Represents the relationship between accounts.
@@ -10,79 +11,91 @@ import kotlinx.serialization.Serializable
 public data class Relationship(
 
     /**
-     * ID of the account being examined.
+     * The account ID.
      */
     @SerialName("id")
     val accountId: String,
 
     /**
-     * Whether the current account is following this account.
+     * Are you following this user?
      */
     @SerialName("following")
     val isFollowing: Boolean,
 
     /**
-     * Whether the current account has a pending follow request for this account.
-     */
-    @SerialName("requested")
-    val hasPendingFollowRequest: Boolean,
-
-    /**
-     * Whether the current account is featuring this account on their profile.
-     */
-    @SerialName("endorsed")
-    val isFeatured: Boolean,
-
-    /**
-     * Whether the current account is being followed by this account.
-     */
-    @SerialName("followed_by")
-    val isFollowedBy: Boolean,
-
-    /**
-     * Whether the current account has muted this account.
-     */
-    @SerialName("muting")
-    val isMuting: Boolean,
-
-    /**
-     * Whether the current account has muted notifications for this account.
-     */
-    @SerialName("muting_notifications")
-    val isMutingNotifications: Boolean,
-
-    /**
-     * Whether the current account is showing boosts from this account.
+     * Are you receiving this user's boosts in your home timeline?
      */
     @SerialName("showing_reblogs")
     val isShowingBoosts: Boolean,
 
     /**
-     * Whether the current account has enabled notifications for this account.
+     * Have you enabled notifications for this user?
      */
     @SerialName("notifying")
     val isNotifying: Boolean,
 
     /**
-     * Whether the current account is blocking this account.
+     * Which languages are you following from this user?
+     */
+    @SerialName("languages")
+    val languages: List<String>? = null,
+
+    /**
+     * Are you followed by this user?
+     */
+    @SerialName("followed_by")
+    val isFollowedBy: Boolean,
+
+    /**
+     * Are you blocking this user?
      */
     @SerialName("blocking")
     val isBlocking: Boolean,
 
     /**
-     * Whether the current account is blocking this account's domain.
-     */
-    @SerialName("domain_blocking")
-    val isDomainBlocking: Boolean,
-
-    /**
-     * Whether the current account is being blocked by this account.
+     * Is this user blocking you?
      */
     @SerialName("blocked_by")
     val isBlockedBy: Boolean,
 
     /**
-     * A private comment left by the current account on this account.
+     * Are you muting this user?
+     */
+    @SerialName("muting")
+    val isMuting: Boolean,
+
+    /**
+     * Are you muting notifications from this user?
+     */
+    @SerialName("muting_notifications")
+    val isMutingNotifications: Boolean,
+
+    /**
+     * Do you have a pending follow request for this user?
+     */
+    @SerialName("requested")
+    val hasPendingFollowRequest: Boolean,
+
+    /**
+     * Has this user requested to follow you?
+     */
+    @SerialName("requested_by")
+    val isRequestedBy: Boolean? = null,
+
+    /**
+     * Are you blocking this user's domain?
+     */
+    @SerialName("domain_blocking")
+    val isDomainBlocking: Boolean,
+
+    /**
+     * Are you featuring this user on your profile?
+     */
+    @SerialName("endorsed")
+    val isFeatured: Boolean,
+
+    /**
+     * This user's profile bio.
      */
     @SerialName("note")
     val note: String

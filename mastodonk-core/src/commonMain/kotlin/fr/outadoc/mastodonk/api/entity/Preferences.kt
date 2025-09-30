@@ -26,7 +26,13 @@ public data class Preferences(
      * ISO 639-1 language two-letter code.
      */
     @SerialName("posting:default:language")
-    val defaultLanguage: String,
+    val defaultLanguage: String?,
+
+    /**
+     * Default policy for quoting posts.
+     */
+    @SerialName("posting:default:quote_policy")
+    val postingDefaultQuotePolicy: String?,
 
     /**
      * Whether media attachments should be automatically displayed or blurred/hidden.

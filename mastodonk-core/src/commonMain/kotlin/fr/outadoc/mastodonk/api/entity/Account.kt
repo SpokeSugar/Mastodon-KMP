@@ -2,6 +2,7 @@ package fr.outadoc.mastodonk.api.entity
 
 import fr.outadoc.mastodonk.api.entity.paging.Pageable
 import kotlinx.datetime.Instant
+import kotlin.collections.List
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,7 +34,7 @@ public data class Account(
      * The location of the user's profile page.
      */
     @SerialName("url")
-    val url: String,
+    val url: String?,
 
     @SerialName("display_name")
     val displayName: String,
@@ -84,7 +85,7 @@ public data class Account(
      * If none, an empty array will be returned.
      */
     @SerialName("emojis")
-    val emojis: List<Emoji>,
+    val emojis: List<CustomEmoji>,
 
     /**
      * Date at which the account was created.
@@ -148,6 +149,63 @@ public data class Account(
      */
     @SerialName("bot")
     val isBot: Boolean? = null,
+
+    /**
+     * The user's ActivityPub actor identifier (used for federation).
+     * Version history:
+     * 4.2.0 - added
+     */
+    @SerialName("uri")
+    val uri: String? = null,
+
+    /**
+     * Whether the account allows indexing by search engines.
+     * Version history:
+     * 4.3.0 - added
+     */
+    @SerialName("indexable")
+    val indexable: Boolean? = null,
+
+    /**
+     * Whether the local user has opted out of being indexed by search engines.
+     * Version history:
+     * 4.0.0 - added
+     */
+    @SerialName("noindex")
+    val noindex: Boolean? = null,
+
+    /**
+     * An extra attribute returned only when an account is memorialized.
+     * Version history:
+     * 4.2.0 - added
+     */
+    @SerialName("memorial")
+    val memorial: Boolean? = null,
+
+    /**
+     * An extra attribute returned only when an account is silenced. If true, indicates that the account should be hidden behind a warning screen.
+     * Version history:
+     * 3.5.3 - added
+     */
+    @SerialName("limited")
+    val limited: Boolean? = null,
+
+    /**
+     * Whether the user hides the contents of their follows and followers collections.
+     * Version history:
+     * 4.3.0 - added
+     */
+    @SerialName("hide_collections")
+    val hideCollections: Boolean? = null,
+
+    /**
+     * An array of roles assigned to the user that are publicly visible.
+     * Will be an empty array if no roles are highlighted or if the account is remote.
+     * Version history:
+     * 4.1.0 - added
+     */
+    @SerialName("roles")
+    val roles: List<AccountRole>? = null,
 
     /**
      * An entity to be used with API methods to verify and update credentials.

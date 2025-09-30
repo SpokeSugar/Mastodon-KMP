@@ -4,17 +4,29 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * The different roles that can be attributed to an [Account].
+ * The simplified role entity returned in the Account `roles` array,
+ * containing only public role information.
+ *
+ * @see [API LDoc](https://docs.joinmastodon.org/entities/Account/#AccountRole)
  */
 @Serializable
-public enum class AccountRole {
+public data class AccountRole(
+    /**
+     * The ID of the Role in the database.
+     */
+    @SerialName("id")
+    val id: String,
 
-    @SerialName("admin")
-    Admin,
+    /**
+     * The name of the role.
+     */
+    @SerialName("name")
+    val name: String,
 
-    @SerialName("moderator")
-    Moderator,
-
-    @SerialName("user")
-    User
-}
+    /**
+     * The hex code assigned to this role.
+     * If no hex code is assigned, the string will be empty.
+     */
+    @SerialName("color")
+    val color: String
+)

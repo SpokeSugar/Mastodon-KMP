@@ -20,6 +20,12 @@ public data class FeaturedTag(
     val name: String,
 
     /**
+     * A link to all statuses by a user that contain this hashtag.
+     */
+    @SerialName("url")
+    val url: String,
+
+    /**
      * The number of authored statuses containing this hashtag.
      */
     @SerialName("statuses_count")

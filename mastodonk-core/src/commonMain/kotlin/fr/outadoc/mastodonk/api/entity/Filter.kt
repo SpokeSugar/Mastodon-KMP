@@ -1,24 +1,27 @@
 package fr.outadoc.mastodonk.api.entity
 
+import fr.outadoc.mastodonk.serializer.TimestampToInstantSerializer
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.collections.List
 
 /**
- * Represents a user-defined filter for determining
- * which statuses should not be shown to the user.
+ * Represents a user-defined filter for determining which statuses should not be shown to the user.
  */
 @Serializable
 public data class Filter(
-
+    /**
+     * The ID of the Filter in the database.
+     */
     @SerialName("id")
-    val filterId: String,
+    val id: String,
 
     /**
-     * The text to be filtered.
+     * A title given by the user to name the filter.
      */
-    @SerialName("phrase")
-    val phrase: String,
+    @SerialName("title")
+    val title: String,
 
     /**
      * The contexts in which the filter should be applied.
@@ -27,22 +30,74 @@ public data class Filter(
     val context: List<FilterContext>,
 
     /**
-     * Should matching entities in home and notifications be dropped by the server?
-     */
-    @SerialName("irreversible")
-    val isIrreversible: Boolean,
-
-    /**
-     * Should the filter consider word boundaries?
-     *
-     * @see [Filter docs](https://docs.joinmastodon.org/entities/filter/)
-     */
-    @SerialName("whole_word")
-    val wholeWord: Boolean,
-
-    /**
-     * Time at which the filter should no longer be applied.
+     * When the filter should no longer be applied.
+     * Null if the filter does not expire.
      */
     @SerialName("expires_at")
-    val expiresAt: Instant?
+    @Serializable(with = TimestampToInstantSerializer::class)
+    val expiresAt: Instant? = null,
+
+    /**
+     * The action to be taken when a status matches this filter.
+     */
+    @SerialName("filter_action")
+    val filterAction: FilterAction,
+
+    /**
+     * The keywords grouped under this filter.
+     * Omitted when part of a [FilterResult].
+     */
+    @SerialName("keywords")
+    val keywords: List<FilterKeyword>? = null,
+
+    /**
+     * The statuses grouped under this filter.
+     * Omitted when part of a [FilterResult].
+     */
+    @SerialName("statuses")
+    val statuses: List<FilterStatus>? = null
 )
+
+/**
+ * Contexts in which a filter can be applied.
+ */
+@Serializable
+public enum class FilterContext(public val value: String) {
+    /** Home timeline and lists. */
+    @SerialName("home")
+    HOME("home"),
+
+    /** Notifications timeline. */
+    @SerialName("notifications")
+    NOTIFICATIONS("notifications"),
+
+    /** Public timelines. */
+    @SerialName("public")
+    PUBLIC("public"),
+
+    /** Expanded thread of a detailed status. */
+    @SerialName("thread")
+    THREAD("thread"),
+
+    /** When viewing a profile. */
+    @SerialName("account")
+    ACCOUNT("account")
+}
+
+/**
+ * Action to be taken when a status matches a filter.
+ */
+@Serializable
+public enum class FilterAction(public val value: String) {
+    /** Show a warning that identifies the matching filter by title, and allow the user to expand the filtered status. */
+    @SerialName("warn")
+    WARN("warn"),
+
+    /** Do not show this status if it is received. */
+    @SerialName("hide")
+    HIDE("hide"),
+
+    /** Hide/blur media attachments with a warning identifying the matching filter by title. */
+    @SerialName("blur")
+    BLUR("blur")
+}

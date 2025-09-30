@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.paging.api.endpoint.timelines
 
 import androidx.paging.PagingSource
-import fr.outadoc.mastodonk.api.endpoint.timelines.TimelinesApi
+import fr.outadoc.mastodonk.api.endpoint.v1.timelines.TimelinesApi
 import fr.outadoc.mastodonk.api.entity.Status
 import fr.outadoc.mastodonk.api.entity.paging.PageInfo
 import fr.outadoc.mastodonk.paging.pagingSource

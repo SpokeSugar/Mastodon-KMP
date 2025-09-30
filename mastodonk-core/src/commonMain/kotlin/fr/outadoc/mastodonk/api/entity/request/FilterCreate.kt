@@ -1,12 +1,12 @@
 package fr.outadoc.mastodonk.api.entity.request
 
-import fr.outadoc.mastodonk.api.entity.Filter
-import fr.outadoc.mastodonk.api.entity.FilterContext
+import fr.outadoc.mastodonk.api.entity.V1Filter
+import fr.outadoc.mastodonk.api.entity.V1FilterContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Object used to create a new [Filter].
+ * Object used to create a new [V1Filter].
  */
 @Serializable
 public data class FilterCreate(
@@ -21,7 +21,7 @@ public data class FilterCreate(
      * Contexts to filter in. At least one context must be specified.
      */
     @SerialName("context")
-    val context: List<FilterContext>,
+    val context: List<V1FilterContext>,
 
     /**
      * Should the server irreversibly drop matching entities from home and notifications?

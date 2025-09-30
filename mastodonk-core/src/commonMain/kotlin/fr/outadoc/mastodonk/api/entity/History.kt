@@ -1,32 +1,30 @@
 package fr.outadoc.mastodonk.api.entity
 
-import fr.outadoc.mastodonk.serializer.TimestampToLocalDateSerializer
-import kotlinx.datetime.LocalDate
+import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Represents daily usage history of a hashtag.
+ * Usage statistics for a given hashtag.
  */
 @Serializable
 public data class History(
 
     /**
-     * Day the historical data was recorded on.
+     * UNIX timestamp on midnight of the given day.
      */
     @SerialName("day")
-    @Serializable(with = TimestampToLocalDateSerializer::class)
-    val day: LocalDate,
+    val day: Instant,
 
     /**
      * The counted usage of the tag within that day.
      */
     @SerialName("uses")
-    val usageCount: Long,
+    val uses: Long,
 
     /**
-     * the total of accounts using the tag within that day.
+     * The total of accounts using the tag within that day.
      */
     @SerialName("accounts")
-    val accountCount: Long
+    val accounts: Long
 )

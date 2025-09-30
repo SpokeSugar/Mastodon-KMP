@@ -11,7 +11,6 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public data class Field(
-
     @SerialName("name")
     val name: String,
 

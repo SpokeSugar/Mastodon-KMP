@@ -4,20 +4,26 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * @see [Official docs](https://docs.joinmastodon.org/methods/statuses/media/#focal-points)
+ * Represents a focal point in an image.
+ *
+ * @see [Official docs](https://docs.joinmastodon.org/entities/MediaAttachment/#focal-points)
  */
 @Serializable
 public data class FocalPoint(
 
     /**
-     * x coordinate in [-1, +1]
+     * The x coordinate of the focal point.
+     *
+     * Float, in [-1, 1].
      */
     @SerialName("x")
-    val x: Double,
+    val x: Float,
 
     /**
-     * y coordinate in [-1, +1]
+     * The y coordinate of the focal point.
+     *
+     * Float, in [-1, 1].
      */
     @SerialName("y")
-    val y: Double
+    val y: Float
 )

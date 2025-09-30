@@ -1,13 +1,13 @@
 package fr.outadoc.mastodonk.paging.api.endpoint.notifications
 
-import fr.outadoc.mastodonk.api.endpoint.notifications.NotificationsApi
 import fr.outadoc.mastodonk.api.entity.Notification
 import fr.outadoc.mastodonk.api.entity.NotificationType
 import fr.outadoc.mastodonk.api.entity.paging.PageInfo
 import androidx.paging.PagingSource
+import fr.outadoc.mastodonk.api.endpoint.v1.notifications.V1NotificationsApi
 import fr.outadoc.mastodonk.paging.pagingSource
 
-public fun NotificationsApi.getNotificationsSource(
+public fun V1NotificationsApi.getNotificationsSource(
     excludeTypes: List<NotificationType>? = null,
     accountId: String? = null
 ): PagingSource<PageInfo, Notification> {

@@ -1,6 +1,6 @@
 package fr.outadoc.mastodonk.paging.api.endpoint.accounts
 
-import fr.outadoc.mastodonk.api.endpoint.accounts.FavouritesApi
+import fr.outadoc.mastodonk.api.endpoint.v1.accounts.FavouritesApi
 import fr.outadoc.mastodonk.api.entity.Status
 import fr.outadoc.mastodonk.api.entity.paging.PageInfo
 import androidx.paging.PagingSource
