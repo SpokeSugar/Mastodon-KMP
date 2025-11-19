@@ -13,10 +13,13 @@
 ## Setup
 
 ```kt
-repositories {
-    maven { url = uri("https://nexus.outadoc.fr/repository/public") }
+// settings.gralde.kts
+sourceControl {
+    gitRepository(java.net.URI.create("https://github.com/SpokeSugar/Mastodon-KMP")) {
+        producesModule("fr.outadoc.mastodonk:mastodonk-paging")
+    }
 }
-
+//build.gradle.kts
 kotlin {
     sourceSets {
         val commonMain by getting {
