@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.api.entity
 
 import fr.outadoc.mastodonk.serializer.TimestampToInstantSerializer
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

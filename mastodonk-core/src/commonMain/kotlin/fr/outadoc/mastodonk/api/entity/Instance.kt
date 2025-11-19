@@ -110,97 +110,96 @@ public data class Configuration(
 
     @SerialName("limited_federation")
     val limitedFederation: Boolean? = null
-)
+) {
+    @Serializable
+    public data class Translation(
+        @SerialName("enabled")
+        val enabled: Boolean
+    )
 
-@Serializable
-public data class Urls(
-    @SerialName("streaming")
-    val streaming: String,
+    @Serializable
+    public data class Urls(
+        @SerialName("streaming")
+        val streaming: String,
 
-    @SerialName("status")
-    val status: String? = null,
+        @SerialName("status")
+        val status: String? = null,
 
-    @SerialName("about")
-    val about: String? = null,
+        @SerialName("about")
+        val about: String? = null,
 
-    @SerialName("privacy_policy")
-    val privacyPolicy: String? = null,
+        @SerialName("privacy_policy")
+        val privacyPolicy: String? = null,
 
-    @SerialName("terms_of_service")
-    val termsOfService: String? = null
-)
+        @SerialName("terms_of_service")
+        val termsOfService: String? = null
+    )
+    @Serializable
+    public data class Vapid(
+        @SerialName("public_key")
+        val publicKey: String
+    )
 
-@Serializable
-public data class Vapid(
-    @SerialName("public_key")
-    val publicKey: String
-)
+    @Serializable
+    public data class Accounts(
+        @SerialName("max_featured_tags")
+        val maxFeaturedTags: Long,
 
-@Serializable
-public data class Accounts(
-    @SerialName("max_featured_tags")
-    val maxFeaturedTags: Long,
+        @SerialName("max_pinned_statuses")
+        val maxPinnedStatuses: Long? = null
+    )
 
-    @SerialName("max_pinned_statuses")
-    val maxPinnedStatuses: Long? = null
-)
+    @Serializable
+    public data class Statuses(
+        @SerialName("max_characters")
+        val maxCharacters: Long,
 
-@Serializable
-public data class Statuses(
-    @SerialName("max_characters")
-    val maxCharacters: Long,
+        @SerialName("max_media_attachments")
+        val maxMediaAttachments: Long,
 
-    @SerialName("max_media_attachments")
-    val maxMediaAttachments: Long,
+        @SerialName("characters_reserved_per_url")
+        val charactersReservedPerUrl: Long
+    )
 
-    @SerialName("characters_reserved_per_url")
-    val charactersReservedPerUrl: Long
-)
+    @Serializable
+    public data class MediaAttachments(
+        @SerialName("description_limit")
+        val descriptionLimit: Long,
 
-@Serializable
-public data class MediaAttachments(
-    @SerialName("description_limit")
-    val descriptionLimit: Long,
+        @SerialName("image_matrix_limit")
+        val imageMatrixLimit: Long,
 
-    @SerialName("image_matrix_limit")
-    val imageMatrixLimit: Long,
+        @SerialName("image_size_limit")
+        val imageSizeLimit: Long,
 
-    @SerialName("image_size_limit")
-    val imageSizeLimit: Long,
+        @SerialName("supported_mime_types")
+        val supportedMimeTypes: List<String>,
 
-    @SerialName("supported_mime_types")
-    val supportedMimeTypes: List<String>,
+        @SerialName("video_frame_rate_limit")
+        val videoFrameRateLimit: Long,
 
-    @SerialName("video_frame_rate_limit")
-    val videoFrameRateLimit: Long,
+        @SerialName("video_matrix_limit")
+        val videoMatrixLimit: Long,
 
-    @SerialName("video_matrix_limit")
-    val videoMatrixLimit: Long,
+        @SerialName("video_size_limit")
+        val videoSizeLimit: Long
+    )
 
-    @SerialName("video_size_limit")
-    val videoSizeLimit: Long
-)
+    @Serializable
+    public data class Polls(
+        @SerialName("max_options")
+        val maxOptions: Long,
 
-@Serializable
-public data class Polls(
-    @SerialName("max_options")
-    val maxOptions: Long,
+        @SerialName("max_characters_per_option")
+        val maxCharactersPerOption: Long,
 
-    @SerialName("max_characters_per_option")
-    val maxCharactersPerOption: Long,
+        @SerialName("min_expiration")
+        val minExpiration: Long,
 
-    @SerialName("min_expiration")
-    val minExpiration: Long,
-
-    @SerialName("max_expiration")
-    val maxExpiration: Long
-)
-
-@Serializable
-public data class Translation(
-    @SerialName("enabled")
-    val enabled: Boolean
-)
+        @SerialName("max_expiration")
+        val maxExpiration: Long
+    )
+}
 
 @Serializable
 public data class Registrations(

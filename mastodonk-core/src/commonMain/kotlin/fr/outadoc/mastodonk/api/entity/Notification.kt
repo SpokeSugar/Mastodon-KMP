@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.api.entity
 
 import fr.outadoc.mastodonk.api.entity.paging.Pageable
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

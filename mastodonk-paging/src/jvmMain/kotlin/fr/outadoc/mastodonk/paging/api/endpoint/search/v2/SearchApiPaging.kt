@@ -1,7 +1,7 @@
-package fr.outadoc.mastodonk.paging.api.endpoint.search
+package fr.outadoc.mastodonk.paging.api.endpoint.search.v2
 
 import androidx.paging.PagingSource
-import fr.outadoc.mastodonk.api.endpoint.v1.search.SearchApi
+import fr.outadoc.mastodonk.api.endpoint.v2.search.SearchApi
 import fr.outadoc.mastodonk.api.entity.Account
 import fr.outadoc.mastodonk.api.entity.SearchType
 import fr.outadoc.mastodonk.api.entity.Status
@@ -14,7 +14,7 @@ public fun SearchApi.searchAccountsSource(
     accountId: String? = null,
     excludeUnreviewed: Boolean? = null,
     attemptResolve: Boolean? = null,
-    onlyFollowing: Boolean? = null
+    following: Boolean? = null
 ): PagingSource<OffsetPageInfo, Account> {
     return offsetPagingSource { params ->
         search(
@@ -22,8 +22,8 @@ public fun SearchApi.searchAccountsSource(
             accountId = accountId,
             type = SearchType.Accounts,
             excludeUnreviewed = excludeUnreviewed,
-            attemptResolve = attemptResolve,
-            onlyFollowing = onlyFollowing,
+            resolve = attemptResolve,
+            following = following,
             limit = params.loadSize,
             pageInfo = params.key
         ).accounts
@@ -35,7 +35,7 @@ public fun SearchApi.searchStatusesSource(
     accountId: String? = null,
     excludeUnreviewed: Boolean? = null,
     attemptResolve: Boolean? = null,
-    onlyFollowing: Boolean? = null
+    following: Boolean? = null
 ): PagingSource<OffsetPageInfo, Status> {
     return offsetPagingSource { params ->
         search(
@@ -43,8 +43,8 @@ public fun SearchApi.searchStatusesSource(
             accountId = accountId,
             type = SearchType.Statuses,
             excludeUnreviewed = excludeUnreviewed,
-            attemptResolve = attemptResolve,
-            onlyFollowing = onlyFollowing,
+            resolve = attemptResolve,
+            following = following,
             limit = params.loadSize,
             pageInfo = params.key
         ).statuses
@@ -56,7 +56,7 @@ public fun SearchApi.searchHashtagsSource(
     accountId: String? = null,
     excludeUnreviewed: Boolean? = null,
     attemptResolve: Boolean? = null,
-    onlyFollowing: Boolean? = null
+    following: Boolean? = null
 ): PagingSource<OffsetPageInfo, Tag> {
     return offsetPagingSource { params ->
         search(
@@ -64,8 +64,8 @@ public fun SearchApi.searchHashtagsSource(
             accountId = accountId,
             type = SearchType.Hashtags,
             excludeUnreviewed = excludeUnreviewed,
-            attemptResolve = attemptResolve,
-            onlyFollowing = onlyFollowing,
+            resolve = attemptResolve,
+            following = following,
             limit = params.loadSize,
             pageInfo = params.key
         ).hashtags

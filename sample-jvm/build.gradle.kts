@@ -3,6 +3,12 @@ plugins {
     application
 }
 
+kotlin {
+    compilerOptions {
+        optIn.add("kotlin.time.ExperimentalTime")
+    }
+}
+
 dependencies {
     implementation(projects.mastodonkCore)
     implementation(projects.mastodonkPaging)

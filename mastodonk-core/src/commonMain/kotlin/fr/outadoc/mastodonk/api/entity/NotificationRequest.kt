@@ -1,15 +1,16 @@
 package fr.outadoc.mastodonk.api.entity
 
-import fr.outadoc.mastodonk.serializer.InstantSerializer
-import kotlinx.datetime.Instant
+import fr.outadoc.mastodonk.serializer.TimestampToInstantSerializer
+import kotlin.time.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
 
 /**
  * Represents a notification request for a user.
  */
 @Serializable
-public data class NotificationRequest(
+public data class NotificationRequest @OptIn(ExperimentalTime::class) constructor(
     /**
      * The notification request ID.
      */
@@ -20,14 +21,14 @@ public data class NotificationRequest(
      * The timestamp of the notification request.
      */
     @SerialName("created_at")
-    @Serializable(with = InstantSerializer::class)
+    @Serializable(with = TimestampToInstantSerializer::class)
     val createdAt: Instant,
 
     /**
      * The timestamp of the last update.
      */
     @SerialName("updated_at")
-    @Serializable(with = InstantSerializer::class)
+    @Serializable(with = TimestampToInstantSerializer::class)
     val updatedAt: Instant,
 
     /**

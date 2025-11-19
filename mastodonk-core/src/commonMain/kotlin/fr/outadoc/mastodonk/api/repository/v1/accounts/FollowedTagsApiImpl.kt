@@ -13,7 +13,7 @@ internal class FollowedTagsApiImpl(private val client: MastodonHttpClient) : Fol
 
     override suspend fun getFollowedTags(limit: Int?, pageInfo: PageInfo?): Page<List<Tag>> {
         return client.requestPage("/api/v1/followed_tags") {
-            method = HttpMethod.Companion.Get
+            method = HttpMethod.Get
             parameter("limit", limit)
             parameter(pageInfo)
         }

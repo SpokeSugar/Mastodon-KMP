@@ -40,3 +40,9 @@ internal fun HttpRequestBuilder.parameter(pageInfo: PageInfo?) {
     pageInfo?.sinceId?.let { parameter("since_id", it) }
     pageInfo?.maxId?.let { parameter("max_id", it) }
 }
+
+internal fun HttpRequestBuilder.parameter(pageInfo: OffsetPageInfo?) {
+    pageInfo?.minId?.let { parameter("min_id", it) }
+    pageInfo?.maxId?.let { parameter("max_id", it) }
+    pageInfo?.offset?.let { parameter("offset", it) }
+}

@@ -9,6 +9,9 @@ plugins {
 }
 
 kotlin {
+    compilerOptions {
+        optIn.add("kotlin.time.ExperimentalTime")
+    }
     explicitApi()
 
     jvm {

@@ -10,7 +10,8 @@ import fr.outadoc.mastodonk.client.MastodonHttpClient
 import io.ktor.client.request.*
 // formData import is not strictly needed if using setBody with Serializable
 import io.ktor.http.*
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 internal class ScheduledStatusesApiImpl(private val client: MastodonHttpClient) : ScheduledStatusesApi {
 
@@ -28,6 +29,7 @@ internal class ScheduledStatusesApiImpl(private val client: MastodonHttpClient) 
         }
     }
 
+    @OptIn(ExperimentalTime::class)
     override suspend fun updateScheduledStatus(statusId: String, scheduledAt: Instant): ScheduledStatus {
         // Convert Instant to ISO 8601 string for the request body
         val requestBody = ScheduledStatusUpdateRequest(scheduledAt = scheduledAt.toString())

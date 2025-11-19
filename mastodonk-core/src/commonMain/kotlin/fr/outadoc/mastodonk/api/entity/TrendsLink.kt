@@ -26,11 +26,6 @@ public data class TrendsLink(
     @SerialName("description")
     public val description: String? = null,
 
-    /**
-     * The type of the link.
-     */
-    @SerialName("type")
-    public val type: PreviewCardType,
 
     /**
      * The author of the link.

@@ -84,6 +84,8 @@ public sealed class Card {
      */
     public abstract val blurhash: String?
 
+    public abstract  val history: List<LinkHistory>?
+
     @Serializable
     @SerialName("video")
     public data class Video(
@@ -129,7 +131,10 @@ public sealed class Card {
         override val embedUrl: String? = null,
 
         @SerialName("blurhash")
-        override val blurhash: String? = null
+        override val blurhash: String? = null,
+
+        @SerialName("history")
+        override val history: List<LinkHistory>? = null
     ) : Card()
 
     @Serializable
@@ -177,7 +182,10 @@ public sealed class Card {
         override val embedUrl: String? = null,
 
         @SerialName("blurhash")
-        override val blurhash: String? = null
+        override val blurhash: String? = null,
+
+        @SerialName("history")
+        override val history: List<LinkHistory>? = null
     ) : Card()
 
     @Serializable
@@ -227,11 +235,8 @@ public sealed class Card {
         @SerialName("blurhash")
         override val blurhash: String? = null,
 
-        /**
-         * Usage statistics for given days (typically the past week).
-         */
         @SerialName("history")
-        val history: List<LinkHistory>? = null
+        override val history: List<LinkHistory>? = null
 
     ) : Card()
 
@@ -280,6 +285,8 @@ public sealed class Card {
         override val embedUrl: String? = null,
 
         @SerialName("blurhash")
-        override val blurhash: String? = null
+        override val blurhash: String? = null,
+        @SerialName("history")
+        override val history: List<LinkHistory>? = null
     ) : Card()
 }

@@ -9,6 +9,7 @@ import fr.outadoc.mastodonk.api.endpoint.v1.accounts.FavouritesApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.FeaturedTagsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.V1FiltersApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.FollowRequestsApi
+import fr.outadoc.mastodonk.api.endpoint.v1.accounts.FollowedTagsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.MutesApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.PreferencesApi
 import fr.outadoc.mastodonk.api.endpoint.v1.accounts.ReportsApi
@@ -87,6 +88,7 @@ public interface MastodonClient {
     public val endorsements: EndorsementsApi
     public val featuredTags: FeaturedTagsApi
     public val preferences: PreferencesApi
+    public val followedTags : FollowedTagsApi
     public val suggestions: SuggestionsApi // Now V2
     public val v1Suggestions: V1SuggestionsApi // For V1
     public val tags: TagsApi

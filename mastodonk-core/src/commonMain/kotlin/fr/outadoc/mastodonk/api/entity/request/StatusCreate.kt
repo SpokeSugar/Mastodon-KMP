@@ -1,8 +1,7 @@
 package fr.outadoc.mastodonk.api.entity.request
 
-import fr.outadoc.mastodonk.api.entity.QuoteApprovalPolicy
 import fr.outadoc.mastodonk.api.entity.StatusVisibility
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

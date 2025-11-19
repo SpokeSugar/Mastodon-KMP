@@ -1,17 +1,18 @@
 package fr.outadoc.mastodonk.api.entity
 
 import fr.outadoc.mastodonk.api.entity.paging.Pageable
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlin.collections.List
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
 
 /**
  * Represents a user of Mastodon and their associated profile.
  */
 @Serializable
-public data class Account(
+public data class Account @OptIn(ExperimentalTime::class) constructor(
 
     @SerialName("id")
     val accountId: String,

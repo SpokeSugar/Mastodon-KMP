@@ -2,7 +2,7 @@ package fr.outadoc.mastodonk.api.entity
 
 import fr.outadoc.mastodonk.api.entity.paging.Pageable
 import fr.outadoc.mastodonk.serializer.TimestampToInstantSerializer
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.collections.List
@@ -102,5 +102,3 @@ public data class ParamsPoll(
     @SerialName("hide_totals")
     val hideTotals: Boolean? = null
 )
-
-// Reminder: MediaAttachment.kt is assumed to be correctly defined and imported.

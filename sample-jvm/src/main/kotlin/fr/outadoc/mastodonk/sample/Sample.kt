@@ -9,9 +9,8 @@ import fr.outadoc.mastodonk.api.entity.streaming.UpdateEvent
 import fr.outadoc.mastodonk.auth.AuthToken
 import fr.outadoc.mastodonk.auth.AuthTokenProvider
 import fr.outadoc.mastodonk.client.MastodonClient
-import fr.outadoc.mastodonk.paging.api.endpoint.search.searchHashtagsSource
+import fr.outadoc.mastodonk.paging.api.endpoint.search.v2.searchHashtagsSource
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -26,8 +25,8 @@ fun main() = runBlocking {
     }
 
     GlobalScope.launch {
-        client.instance.getInstanceInfo().let { instance ->
-            println("connected to instance ${instance.title} at ${instance.uri}!")
+        client.instance.getInstance().let { instance ->
+            println("connected to instance ${instance.title} at ${instance.domain}!")
             println(instance)
             println()
         }

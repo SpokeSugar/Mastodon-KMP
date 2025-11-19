@@ -1,6 +1,7 @@
 package fr.outadoc.mastodonk.api.entity.form
 
-import fr.outadoc.mastodonk.api.entity.Filter
+import fr.outadoc.mastodonk.api.entity.FilterAction
+import fr.outadoc.mastodonk.api.entity.FilterContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,13 +20,13 @@ public data class FilterUpdate(
      * Where the filter should be applied.
      */
     @SerialName("context")
-    val context: List<Filter.Context>? = null,
+    val context: List<FilterContext>? = null,
 
     /**
      * The policy to be applied when the filter is matched.
      */
     @SerialName("filter_action")
-    val filterAction: Filter.Action? = null,
+    val filterAction: FilterAction? = null,
 
     /**
      * How many seconds from now should the filter expire?
