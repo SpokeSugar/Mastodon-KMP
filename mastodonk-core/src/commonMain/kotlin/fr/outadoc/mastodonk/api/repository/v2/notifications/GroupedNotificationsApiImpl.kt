@@ -3,7 +3,7 @@ package fr.outadoc.mastodonk.api.repository.v2.notifications
 import fr.outadoc.mastodonk.api.endpoint.v2.notifications.GroupedNotificationsApi
 import fr.outadoc.mastodonk.api.entity.Account
 import fr.outadoc.mastodonk.api.entity.paging.Page
-import fr.outadoc.mastodonk.api.entity.v2.GroupedNotificationsResults
+import fr.outadoc.mastodonk.api.entity.GroupedNotificationsResults
 import fr.outadoc.mastodonk.client.MastodonHttpClient
 import io.ktor.client.request.*
 import io.ktor.http.*

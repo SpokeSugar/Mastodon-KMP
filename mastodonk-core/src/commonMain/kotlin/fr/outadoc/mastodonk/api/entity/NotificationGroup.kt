@@ -1,9 +1,5 @@
-package fr.outadoc.mastodonk.api.entity.v2
+package fr.outadoc.mastodonk.api.entity
 
-import fr.outadoc.mastodonk.api.entity.AccountWarning
-import fr.outadoc.mastodonk.api.entity.Report
-import fr.outadoc.mastodonk.api.entity.RelationshipSeveranceEvent
-import fr.outadoc.mastodonk.api.entity.Status
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 

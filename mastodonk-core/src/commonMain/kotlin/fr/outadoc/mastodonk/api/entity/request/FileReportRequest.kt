@@ -1,4 +1,4 @@
-package fr.outadoc.mastodonk.api.request.v1.reports
+package fr.outadoc.mastodonk.api.entity.request
 
 import fr.outadoc.mastodonk.api.entity.ReportCategory
 import kotlinx.serialization.SerialName

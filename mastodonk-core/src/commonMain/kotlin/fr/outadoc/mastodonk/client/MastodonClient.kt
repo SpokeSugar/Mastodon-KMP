@@ -16,6 +16,7 @@ import fr.outadoc.mastodonk.api.endpoint.v1.accounts.SuggestionsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.admin.AdminApi
 import fr.outadoc.mastodonk.api.endpoint.v1.announcements.AnnouncementsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.apps.AppsApi
+import fr.outadoc.mastodonk.api.endpoint.v1.apps.EmailsApi // Added import
 import fr.outadoc.mastodonk.api.endpoint.v1.apps.OAuthApi
 import fr.outadoc.mastodonk.api.endpoint.v1.instance.CustomEmojiApi
 import fr.outadoc.mastodonk.api.endpoint.v1.instance.DirectoryApi
@@ -31,7 +32,7 @@ import fr.outadoc.mastodonk.api.endpoint.v1.statuses.PollsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.statuses.ScheduledStatusesApi
 import fr.outadoc.mastodonk.api.endpoint.v1.statuses.StatusesApi
 import fr.outadoc.mastodonk.api.endpoint.v1.statuses.V1MediaApi
-import fr.outadoc.mastodonk.api.endpoint.v1.suggestions.V1SuggestionsApi // Updated import for V1
+import fr.outadoc.mastodonk.api.endpoint.v1.suggestions.V1SuggestionsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.tags.TagsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.timelines.ConversationsApi
 import fr.outadoc.mastodonk.api.endpoint.v1.timelines.ListsApi
@@ -44,6 +45,7 @@ import fr.outadoc.mastodonk.api.endpoint.v2.notifications.GroupedNotificationsAp
 import fr.outadoc.mastodonk.api.endpoint.v2.notifications.NotificationsApi
 import fr.outadoc.mastodonk.api.endpoint.v2.search.SearchApi 
 import fr.outadoc.mastodonk.api.endpoint.v2.statuses.MediaApi
+
 /**
  * Entry point for all Mastodon APIs.
  */
@@ -118,6 +120,7 @@ public interface MastodonClient {
 
     public val apps: AppsApi
     public val oauth: OAuthApi
+    public val emails: EmailsApi // Added property
 
     // endregion
 

@@ -1,4 +1,4 @@
-package fr.outadoc.mastodonk.api.entity.v2
+package fr.outadoc.mastodonk.api.entity
 
 import kotlinx.serialization.SerialName
 

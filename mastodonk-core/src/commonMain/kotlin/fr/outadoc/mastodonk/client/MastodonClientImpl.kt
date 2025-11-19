@@ -16,6 +16,7 @@ import fr.outadoc.mastodonk.api.repository.v1.accounts.SuggestionsApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.admin.AdminApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.announcements.AnnouncementsApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.apps.AppsApiImpl
+import fr.outadoc.mastodonk.api.repository.v1.apps.EmailsApiImpl // Added import
 import fr.outadoc.mastodonk.api.repository.v1.apps.OAuthApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.instance.CustomEmojiApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.instance.DirectoryApiImpl
@@ -31,7 +32,7 @@ import fr.outadoc.mastodonk.api.repository.v1.statuses.PollsApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.statuses.ScheduledStatusesApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.statuses.StatusesApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.statuses.V1MediaApiImpl
-import fr.outadoc.mastodonk.api.repository.v1.suggestions.V1SuggestionsApiImpl // Updated import for V1 Impl
+import fr.outadoc.mastodonk.api.repository.v1.suggestions.V1SuggestionsApiImpl 
 import fr.outadoc.mastodonk.api.repository.v1.tags.TagsApiImpl
 import fr.outadoc.mastodonk.api.repository.v1.timelines.*
 import fr.outadoc.mastodonk.api.repository.v2.filters.FiltersApiImpl
@@ -88,6 +89,7 @@ internal class MastodonClientImpl(httpClient: MastodonHttpClient) : MastodonClie
 
     override val apps = AppsApiImpl(httpClient)
     override val oauth = OAuthApiImpl(httpClient)
+    override val emails = EmailsApiImpl(httpClient) // Added property
 
     override val search = SearchApiImpl(httpClient)
     override val v1Search = V1SearchApiImpl(httpClient)

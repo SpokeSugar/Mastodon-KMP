@@ -6,7 +6,7 @@ import fr.outadoc.mastodonk.api.entity.paging.parseLinkHeaderToPageRefs
 import fr.outadoc.mastodonk.api.entity.streaming.RawStreamingEvent
 import fr.outadoc.mastodonk.api.entity.streaming.StreamingEvent
 import fr.outadoc.mastodonk.api.entity.streaming.StreamingEventFactory
-import fr.outadoc.mastodonk.api.repository.instance.InstanceApiImpl
+import fr.outadoc.mastodonk.api.repository.v1.instance.InstanceApiImpl
 import fr.outadoc.mastodonk.auth.AuthTokenProvider
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

@@ -1,7 +1,5 @@
-package fr.outadoc.mastodonk.api.entity.v2
+package fr.outadoc.mastodonk.api.entity
 
-import fr.outadoc.mastodonk.api.entity.Account
-import fr.outadoc.mastodonk.api.entity.Status
 import kotlinx.serialization.SerialName
 
 /**

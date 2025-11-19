@@ -10,14 +10,16 @@ internal class ProfileApiImpl(
 ) : ProfileApi {
 
     override suspend fun deleteProfileAvatar(): CredentialAccount {
-        return client.request("/api/v1/profile/avatar", HttpMethod.Delete) {
+        return client.request("/api/v1/profile/avatar") {
             // No parameters needed for this request
+            method = HttpMethod.Delete
         }
     }
 
     override suspend fun deleteProfileHeader(): CredentialAccount {
-        return client.request("/api/v1/profile/header", HttpMethod.Delete) {
+        return client.request("/api/v1/profile/header") {
             // No parameters needed for this request
+            method = HttpMethod.Delete
         }
     }
 }

@@ -1,7 +1,7 @@
 package fr.outadoc.mastodonk.api.endpoint.v2.notifications
 
 import fr.outadoc.mastodonk.api.entity.Account
-import fr.outadoc.mastodonk.api.entity.v2.GroupedNotificationsResults
+import fr.outadoc.mastodonk.api.entity.GroupedNotificationsResults
 import fr.outadoc.mastodonk.api.entity.paging.Page
 
 /**

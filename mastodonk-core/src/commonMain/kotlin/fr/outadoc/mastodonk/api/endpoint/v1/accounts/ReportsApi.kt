@@ -2,6 +2,7 @@ package fr.outadoc.mastodonk.api.endpoint.v1.accounts
 
 import fr.outadoc.mastodonk.api.entity.Report
 import fr.outadoc.mastodonk.api.entity.request.ReportCreate
+import fr.outadoc.mastodonk.api.entity.request.FileReportRequest
 
 /**
  * Create user reports.
@@ -13,5 +14,5 @@ public interface ReportsApi {
     /**
      * File a [Report].
      */
-    public suspend fun fileReport(report: ReportCreate): Report
+    public suspend fun fileReport(report: FileReportRequest): Report
 }
