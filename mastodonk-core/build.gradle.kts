@@ -47,7 +47,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.datetime)
-                implementation(libs.serialization)
+                implementation(libs.serialization.json)
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.contentNegociation)
                 implementation(libs.ktor.logging)

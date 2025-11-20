@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -25,7 +28,6 @@ kotlin {
         browser()
         nodejs()
     }
-
     linuxX64()
     linuxArm64()
     macosX64()
@@ -40,6 +42,12 @@ kotlin {
             dependencies {
                 api(projects.mastodonkCore)
                 api(libs.androidx.paging.common)
+                implementation(libs.serialization.json)
+            }
+        }
+
+        webMain {
+            dependencies {
                 api(libs.serialization)
             }
         }
