@@ -17,8 +17,8 @@ buildscript {
 }
 
 allprojects {
-    group = "fr.outadoc.mastodonk"
-    version = "0.2-alpha06"
+    group = "com.github.SpokeSugar.mastodonk"
+    version = "0.2-alpha07"
 
     repositories {
         mavenCentral()
@@ -62,16 +62,16 @@ allprojects {
                 }
             }
 
-            repositories {
-                maven {
-                    name = "nexus"
-                    url = uri("https://nexus.outadoc.fr/repository/public")
-                    credentials {
-                        username = System.getenv("NEXUS_USERNAME")
-                        password = System.getenv("NEXUS_PASSWORD")
-                    }
-                }
-            }
+//            repositories {
+//                maven {
+//                    name = "nexus"
+//                    url = uri("https://nexus.outadoc.fr/repository/public")
+//                    credentials {
+//                        username = System.getenv("NEXUS_USERNAME")
+//                        password = System.getenv("NEXUS_PASSWORD")
+//                    }
+//                }
+//            }
         }
     }
 
