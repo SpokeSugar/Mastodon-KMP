@@ -40,6 +40,7 @@ kotlin {
             dependencies {
                 api(projects.mastodonkCore)
                 api(libs.androidx.paging.common)
+                api(libs.serialization)
             }
         }
 
