@@ -33,7 +33,7 @@ allprojects {
                 pom {
                     name.set(projectName)
                     description.set("Kotlin/Multiplatform library for Mastodon")
-                    url.set("https://github.com/outadoc/mastodonk")
+                    url.set("https://github.com/SpokeSugar/mastodonk")
 
                     issueManagement {
                         url.set("https://github.com/outadoc/mastodonk/issues")
@@ -55,9 +55,9 @@ allprojects {
                     }
 
                     scm {
-                        connection.set("scm:git:git://github.com/outadoc/mastodonk.git")
-                        developerConnection.set("scm:git:git://github.com/outadoc/mastodonk.git")
-                        url.set("https://github.com/outadoc/mastodonk")
+                        connection.set("scm:git:git://github.com/SpokeSugar/mastodonk.git")
+                        developerConnection.set("scm:git:git://github.com/SpokeSugar/mastodonk.git")
+                        url.set("https://github.com/SpokeSugar/mastodonk.git")
                     }
                 }
             }
